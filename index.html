@@ -15,10 +15,10 @@
             var adicionais = [];
             
             $.each($("input[name='adicionais']:checked"), function(){
-                adicionais.push($(this).val()+ "%0D%0a");                
+                adicionais.push("   - " + $(this).val());                
             });
 
-            var mensagem = "Gostaria de uma torta com as seguintes características: %0D%0D Pão de ló: " + base + "%0D Sabores: " + sabor + "%0D adicionais: %0D   " +  adicionais.join(", %0D   - ");
+            var mensagem = "Gostaria de uma torta com as seguintes características: %0D%0D Pão de ló: " + base + "%0D Sabores: " + sabor + "%0D adicionais: %0D   " +  adicionais.join(", %0D");
 
             var url = "https://api.whatsapp.com/send?phone=555195010522&text=" + mensagem;
 
