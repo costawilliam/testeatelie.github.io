@@ -1,24 +1,78 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Atelie de Ló</title>
-    </head>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery Get Values of Selected Checboxes</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("button").click(function(){
+            
+            var base = $("input[name='base']:checked"). val();
+
+            var sabor = $("input[name='sabor']:checked"). val();
+            
+            var adicionais = [];
+            
+            $.each($("input[name='adicionais']:checked"), function(){
+                adicionais.push($(this).val()+ "\t\n");                
+            });
+
+            var mensagem = "Gostaria de uma torta com as seguintes características: \n Pão de ló: " + base + "\n sabor: " + sabor + "\n adicionais: \n\t" +  adicionais.join(", ");
+
+            var url = "https://api.whatsapp.com/send?phone=555195010522&text=" + mensagem;
+
+            alert(url);
+
+            window.location.href = url;
+    
+        });
+    });
+</script>
+</head>
 
     <body>
 
         <h1>Bem-vindo a Atelie de Ló!</h1>
         <br>
+        <!--  -->
+        <p>Vamos personalizar sua torta :)</p>
+        <br>
 
-        <p>Personalize a sua torta, selecione </p>
+        <p>Selecione o pão de ló desejado:</p>
+        <input type="radio" name="base" value="tradicional"/> Tradicional (Baunilha)<br />
+        <input type="radio" name="base" value="chocolate"/> Chocolate<br />
 
-        <input type="radio" id="tradicional" name="pao_de_lo" value="tradicional">
-        <label for="male">tradicional</label><br>
-        <input type="radio" id="chocolate" name="pao_de_lo" value="chocolate">
-        <label for="female">chocolate</label><br>
 
+        <p>Selecione o sabor:</p>
+        <input type="radio" name="sabor" value="morango_nata"/> Morango e Nata<br />
+        <input type="radio" name="sabor" value="chocolate"/> Nata com raspas de chocolate meio amargo<br />
+        <input type="radio" name="sabor" value="mousse_branco"/> Mouse de chocolate branco<br />
+        <input type="radio" name="sabor" value="mousse_Preto"/> Mouse de chocolate preto<br />
+
+        <br>
+        <p>Adicionais</p>
+        <input type="checkbox" name="adicionais" value="ouro_branco"/> Pedaços de ouro branco em uma camada <br />
+        <input type="checkbox" name="adicionais" value="bla bla bla"/> "bla bla bla <br />
+        <input type="checkbox" name="adicionais" value="xyz"/> xyz<br />
+        <input type="checkbox" name="adicionais" value="hahahhaa"/> hahaha <br />
+
+        <br />
 
         <button type="button">Enviar via Whatsapp!</button>
-        <a href="https://api.whatsapp.com/send?phone=555195010522&text=Ol%C3%A1_william">Enviar via Whatsapp!</a>
+
+        <!-- <button type="button" onclick="window.location.href"="a">Enviar via Whatsapp!</button> -->
+      
+
+
+            
+        <!-- <button type="button">Enviar via Whatsapp!</button> -->
+        <a href="https://api.whatsapp.com/send?phone=555195010522&text=Ol%C3%A1_william">Enviar via Whatsapp!</a> <br />
+
 
     </body>
 </html>
+
+
+
+
